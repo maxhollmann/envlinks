@@ -10,7 +10,7 @@
   .link {
     display: flex;
     width: 285px;
-    color: #000;
+    color: inherit;
     padding: 1rem 0;
   }
 

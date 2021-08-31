@@ -28,6 +28,9 @@
   }
 
   .search, .search:active, .search:focus {
+    background-color: inherit;
+    color: inherit;
+
     width: 100%;
     outline: none;
     border: none;

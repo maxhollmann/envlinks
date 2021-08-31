@@ -1,3 +1,16 @@
+:root {
+  --font-color: #222;
+  --bg-color: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --font-color: #d3cfc9;
+    --bg-color: #181a1b;
+  }
+}
+
+
 html, body {
   position: relative;
   width: 100%;
@@ -5,7 +18,8 @@ html, body {
 }
 
 body {
-  color: #333;
+  color: var(--font-color);
+  background-color: var(--bg-color);
   margin: 0;
   padding: 8px;
   box-sizing: border-box;

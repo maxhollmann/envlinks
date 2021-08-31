@@ -8,7 +8,8 @@
   }
 
   .app {
-    max-width: 1240px;
+    width: 1240px;
+    max-width: 100%;
     margin: 0 auto;
   }
 </style>
