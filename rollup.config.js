@@ -4,9 +4,8 @@ import resolve from '@rollup/plugin-node-resolve';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-only';
-import includeEnv from "svelte-environment-variables";
 import replace from '@rollup/plugin-replace';
-import getLinks from './get-links';
+import getLinks from './src/get-links';
 
 
 const production = !process.env.ROLLUP_WATCH;
