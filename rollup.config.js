@@ -77,6 +77,7 @@ export default {
 
     replace({
       'process.env.LINKS': JSON.stringify(getLinks(process.env)),
+      'process.env.TITLE': JSON.stringify(process.env.LINKS_TITLE || 'Links'),
     }),
   ],
   watch: {
