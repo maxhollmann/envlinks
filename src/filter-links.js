@@ -1,22 +1,20 @@
-const getSearchTerms = (query) => {
-  return query
-    .split(' ')
-    .filter(part => part.length > 0)
-    .map(part => part.toLowerCase())
-}
+import Fuse from 'fuse.js'
 
-const linkMatches = (link, query) => {
-  let matches = true;
-  let linkName = link.name.toLowerCase()
 
-  getSearchTerms(query).forEach(term => {
-    if (!linkName.includes(term))
-      matches = false;
-  })
+export default (links) => {
+  const options = {
+    includeScore: true,
+    keys: ['name'],
+  }
 
-  return matches;
-}
+  const fuse = new Fuse(links, options);
 
-export default (links, query) => {
-  return links.filter(link => linkMatches(link, query));
+  return query => {
+    query = query.trim();
+
+    if (query == '')
+      return links;
+    else
+      return fuse.search(query).map(res => res.item)
+  };
 }

@@ -2,13 +2,15 @@
   import Layout from './Layout.svelte';
   import Search from './Search.svelte';
   import Links from './Links.svelte';
-  import filterLinks from './filter-links.js';
+  import FilterLinks from './filter-links.js';
 
   let links = process.env.LINKS;
   let search = "";
   let searchElement;
 
-  $: filteredLinks = filterLinks(links, search);
+  const filterLinks = FilterLinks(links);
+
+  $: filteredLinks = filterLinks(search);
 
 
   const handleKeydown = (event) => {

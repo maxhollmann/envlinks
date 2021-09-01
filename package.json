@@ -16,6 +16,7 @@
     "babel-jest": "^27.1.0",
     "env-cmd": "^10.1.0",
     "jest": "^27.1.0",
+    "jest-extended": "^0.11.5",
     "rollup": "^2.3.4",
     "rollup-plugin-css-only": "^3.1.0",
     "rollup-plugin-livereload": "^2.0.0",
@@ -25,6 +26,7 @@
   },
   "dependencies": {
     "@rollup/plugin-replace": "^3.0.0",
+    "fuse.js": "^6.4.6",
     "sirv-cli": "^1.0.0",
     "svelte-environment-variables": "^1.0.4"
   }
