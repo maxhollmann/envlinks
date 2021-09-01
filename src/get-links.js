@@ -1,8 +1,8 @@
 const prefixRE = /^LINK_/;
-const suffixRE = /_(URL|NAME|ICON)$/;
-const indexRE = /^(?<num>\d+)_/;
-const iconRE = /\s+icon:(?<name>[\w\-]+)/;
-const nameRE = /\s+name:(?<name>.+)/;
+const suffixRE = /_(URL|NAME|ICON|INDEX)$/;
+const indexRE = /^(\d+)_/;
+const iconRE = /\s+icon:([\w\-]+)/;
+const nameRE = /\s+name:(.+)/;
 
 const onlyUnique = (value, index, self) => {
   return self.indexOf(value) === index;
@@ -18,44 +18,61 @@ const getKeys = (env) => {
 const createLink = (env, key) => {
   let mainSpec = env[`LINK_${key}`];
 
-  const getIndex = () => {
-    const match = key.match(indexRE);
-    if (match)
-      return parseInt(match.groups.num);
+  const first = (steps) => () => {
+    let match;
 
-    return 999999;
+    steps.some(step => {
+      match = step();
+      return typeof(match) !== 'undefined';
+    })
+
+    return match
   }
 
-  const getIcon = () => {
-    if (env[`LINK_${key}_ICON`])
-      return env[`LINK_${key}_ICON`];
+  const fromVarWithSuffix = (suffix) => () => {
+    return env[`LINK_${key}_${suffix}`];
+  }
 
-    const match = mainSpec.match(iconRE);
+  const extractFromMainSpec = (regex) => () => {
+    const match = mainSpec && mainSpec.match(regex);
     if (match) {
-      mainSpec = mainSpec.replace(iconRE, '')
-      return match.groups.name;
+      mainSpec = mainSpec.replace(regex, '')
+      return match[1];
     }
   }
 
-  const getName = () => {
-    if (env[`LINK_${key}_NAME`])
-      return env[`LINK_${key}_NAME`];
-
-    const match = mainSpec.match(nameRE);
-    if (match) {
-      mainSpec = mainSpec.replace(nameRE, '')
-      return match.groups.name;
-    }
-
-    return key.replace(indexRE, '').replace('_', ' ');
+  const toInt = (func) => () => {
+    const s = func();
+    if (typeof(s) !== 'undefined')
+      return parseInt(s)
   }
 
-  const getURL = () => {
-    if (env[`LINK_${key}_URL`])
-      return env[`LINK_${key}_URL`];
+  const getIndex = first([
+    toInt(fromVarWithSuffix('INDEX')),
+    toInt(() => {
+      const match = key.match(indexRE);
+      if (match)
+        return match[1];
+    }),
+    () => 999999,
+  ])
 
-    return mainSpec;
-  }
+  const getIcon = first([
+    fromVarWithSuffix('ICON'),
+    extractFromMainSpec(iconRE),
+  ])
+
+  const getName = first([
+    fromVarWithSuffix('NAME'),
+    extractFromMainSpec(nameRE),
+    () => key.replace(indexRE, '').replace('_', ' '),
+  ])
+
+  const getURL = first([
+    fromVarWithSuffix('URL'),
+    () => mainSpec,
+  ])
+
 
   const index = getIndex();
   const icon = getIcon();

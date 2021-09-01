@@ -9,7 +9,6 @@ describe('getLinks', () => {
   const scenario = (description, theEnv, expectation, expectedLinks) => {
     describe(description, () => {
       withEnv(theEnv)
-
       test(expectation, expectLinks(expectedLinks));
     })
   }
@@ -49,10 +48,12 @@ describe('getLinks', () => {
   describe('name', () => {
     scenario(
       'not given explicitly', {
-        LINK_Test_link: 'https://example.com',
+        LINK_Test_link_URL: 'https://example.com',
+        LINK_Test_link2: 'https://example2.com',
       },
       'extracts the name from the key', [
         { name: 'Test link', url: 'https://example.com', icon: undefined, index: 999999 },
+        { name: 'Test link2', url: 'https://example2.com', icon: undefined, index: 999999 },
       ]
     )
 
@@ -87,6 +88,17 @@ describe('getLinks', () => {
     )
 
     scenario(
+      'not given', {
+        LINK_test_URL: 'https://example.com',
+        LINK_test2: 'https://example2.com',
+      },
+      'sets the icon to undefined', [
+        { name: 'test', url: 'https://example.com', icon: undefined, index: 999999 },
+        { name: 'test2', url: 'https://example2.com', icon: undefined, index: 999999 },
+      ]
+    )
+
+    scenario(
       'given via main spec and _ICON var', {
         LINK_test: 'https://example.com icon:the-icon',
         LINK_test_ICON: 'other-icon',
@@ -114,6 +126,29 @@ describe('getLinks', () => {
       },
       'uses the url from the _URL variable', [
         { name: 'test', url: 'https://another.url', icon: undefined, index: 999999 },
+      ]
+    )
+  })
+
+  describe('index', () => {
+    scenario(
+      'with the index given via main spec', {
+        LINK_0_test0: 'https://example.com',
+        LINK_1_test1: 'https://example2.com',
+      },
+      'extracts the index from the main spec', [
+        { name: 'test0', url: 'https://example.com', icon: undefined, index: 0 },
+        { name: 'test1', url: 'https://example2.com', icon: undefined, index: 1 },
+      ]
+    )
+
+    scenario(
+      'with the index given via main spec and _INDEX var', {
+        LINK_1_test: 'https://example.com',
+        LINK_1_test_INDEX: '12',
+      },
+      'uses the index from the _INDEX variable', [
+        { name: 'test', url: 'https://example.com', icon: undefined, index: 12 },
       ]
     )
   })
