@@ -5,12 +5,17 @@
   "scripts": {
     "build": "rollup -c",
     "start": "sirv public --no-clear",
-    "dev": "env-cmd rollup -c -w"
+    "dev": "env-cmd rollup -c -w",
+    "test": "jest"
   },
   "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
+    "babel-jest": "^27.1.0",
     "env-cmd": "^10.1.0",
+    "jest": "^27.1.0",
     "rollup": "^2.3.4",
     "rollup-plugin-css-only": "^3.1.0",
     "rollup-plugin-livereload": "^2.0.0",

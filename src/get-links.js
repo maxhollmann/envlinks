@@ -1,32 +1,73 @@
-export default (env) => {
-  const prefixRE = /^LINK_/;
-  const suffixRE = /_(URL|NAME|ICON)$/;
-  const indexRE = /^(?<num>\d+)_/;
+const prefixRE = /^LINK_/;
+const suffixRE = /_(URL|NAME|ICON)$/;
+const indexRE = /^(?<num>\d+)_/;
+const iconRE = /\s+icon:(?<name>[\w\-]+)/;
+const nameRE = /\s+name:(?<name>.+)/;
 
-  function onlyUnique(value, index, self) {
-    return self.indexOf(value) === index;
+const onlyUnique = (value, index, self) => {
+  return self.indexOf(value) === index;
+}
+
+const getKeys = (env) => {
+  return Object.keys(env)
+    .filter(key => key.match(prefixRE))
+    .map(key => key.replace(prefixRE, '').replace(suffixRE, ''))
+    .filter(onlyUnique);
+}
+
+const createLink = (env, key) => {
+  let mainSpec = env[`LINK_${key}`];
+
+  const getIndex = () => {
+    const match = key.match(indexRE);
+    if (match)
+      return parseInt(match.groups.num);
+
+    return 999999;
   }
 
-  let keys = Object.keys(env)
-      .filter(key => key.match(prefixRE))
-      .map(key => key.replace(prefixRE, '').replace(suffixRE, ''))
-      .filter(onlyUnique);
+  const getIcon = () => {
+    if (env[`LINK_${key}_ICON`])
+      return env[`LINK_${key}_ICON`];
 
-  let links = keys.map(key => {
-    let index = 999999;
-    let match = key.match(indexRE);
+    const match = mainSpec.match(iconRE);
     if (match) {
-      index = parseInt(match.groups.num);
+      mainSpec = mainSpec.replace(iconRE, '')
+      return match.groups.name;
+    }
+  }
+
+  const getName = () => {
+    if (env[`LINK_${key}_NAME`])
+      return env[`LINK_${key}_NAME`];
+
+    const match = mainSpec.match(nameRE);
+    if (match) {
+      mainSpec = mainSpec.replace(nameRE, '')
+      return match.groups.name;
     }
 
-    const name = env[`LINK_${key}_NAME`] || key.replace(indexRE, '').replace('_', ' ');
-    const url = env[`LINK_${key}_URL`] || env[`LINK_${key}`];
-    const icon = env[`LINK_${key}_ICON`];
+    return key.replace(indexRE, '').replace('_', ' ');
+  }
 
-    return { index, name, url, icon };
-  });
+  const getURL = () => {
+    if (env[`LINK_${key}_URL`])
+      return env[`LINK_${key}_URL`];
 
-  links = links.sort((l1, l2) => l1.index - l2.index);
+    return mainSpec;
+  }
 
-  return links;
+  const index = getIndex();
+  const icon = getIcon();
+  const name = getName();
+  const url = getURL();
+
+  return { index, name, url, icon };
+}
+
+export default (env) => {
+  const keys = getKeys(env);
+  return keys
+    .map(key => createLink(env, key))
+    .sort((l1, l2) => l1.index - l2.index);
 }
