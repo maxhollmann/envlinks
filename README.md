@@ -1,8 +1,6 @@
 # envlinks
 
-## Deployment
-
-### Using Docker
+## Deployment using Docker
 
 `docker run --rm -p 80:5000 --env-file .env maxhollmann/envlinks:master`
 
@@ -19,46 +17,9 @@ services:
       - 80:5000
     environment:
       LINKS_TITLE: "Test links"
-
-      LINK_0_GOOGLE_URL: https://google.com
-      LINK_0_GOOGLE_ICON: magnify
-
-      LINK_1_WIKIPEDIA_NAME: Wikipedia
-      LINK_1_WIKIPEDIA_URL: https://wikipedia.org
-      LINK_1_WIKIPEDIA_ICON: book-open-blank-variant
+      LINK_0_GOOGLE: https://google.com icon:magnify
+      LINK_1_WIKIPEDIA: https://wikipedia.org icon:book-open-blank-variant
 ```
-
-### Using [Vercel](https://vercel.com)
-
-Install `vercel` if you haven't already:
-
-```bash
-npm install -g vercel
-```
-
-Then, from within the project folder:
-
-```bash
-npm run build
-cd public
-vercel deploy --name my-project
-```
-
-### Using [surge](https://surge.sh/)
-
-Install `surge` if you haven't already:
-
-```bash
-npm install -g surge
-```
-
-Then, from within your project folder:
-
-```bash
-npm run build
-surge public my-project.surge.sh
-```
-
 
 ## Development
 
