@@ -1,4 +1,4 @@
-import getLinks from '../src/get-links';
+import getLinks from './get-links';
 
 describe('getLinks', () => {
   let env;
