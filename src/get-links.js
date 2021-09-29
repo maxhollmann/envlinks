@@ -65,7 +65,7 @@ const createLink = (env, key) => {
   const getName = first([
     fromVarWithSuffix('NAME'),
     extractFromMainSpec(nameRE),
-    () => key.replace(indexRE, '').replace('_', ' '),
+    () => key.replace(indexRE, '').replaceAll('_', ' '),
   ])
 
   const getURL = first([

@@ -35,11 +35,11 @@ describe('getLinks', () => {
   scenario(
     'with multiple links with and without index', {
       LINK_2_test1: 'https://example1.com',
-      LINK_1_test2: 'https://example2.com',
+      LINK_1_test_with_spaces: 'https://example2.com',
       LINK_test3: 'https://example3.com',
     },
     'returns the correct links ordered by index', [
-      { name: 'test2', url: 'https://example2.com', icon: undefined, index: 1 },
+      { name: 'test with spaces', url: 'https://example2.com', icon: undefined, index: 1 },
       { name: 'test1', url: 'https://example1.com', icon: undefined, index: 2 },
       { name: 'test3', url: 'https://example3.com', icon: undefined, index: 999999 },
     ]
