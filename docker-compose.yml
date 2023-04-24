@@ -5,3 +5,10 @@ services:
     image: maxhollmann/envlinks:preview
     build:
       context: .
+    ports:
+      - 5000:5000
+    environment:
+      LINKS_TITLE: "Test links"
+      LINK_0_GOOGLE: https://google.com icon:magnify
+      LINK_1_WIKIPEDIA: https://wikipedia.org icon:book-open-blank-variant
+      LINK_2_envlinks_Github: https://github.com/maxhollmann/envlinks icon:github
