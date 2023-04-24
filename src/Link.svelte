@@ -12,6 +12,11 @@
     width: 285px;
     color: inherit;
     padding: 1rem 0;
+    text-decoration: none;
+  }
+
+  .link:hover {
+    text-decoration: underline;
   }
 
   .link-icon {

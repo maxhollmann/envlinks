@@ -23,13 +23,12 @@
   .search-container {
     width: 300px;
     max-width: 100%;
-    margin: 0 auto;
-    margin-bottom: 50px;
+    margin: 0 auto 50px auto;
   }
 
   .search, .search:active, .search:focus {
     background-color: inherit;
-    color: inherit;
+    color: var(--font-color-muted);
 
     width: 100%;
     outline: none;
@@ -38,6 +37,13 @@
     text-align: center;
     margin: 0;
     font-size: 20px;
+  }
+
+  .search::placeholder,
+  .search:-ms-input-placeholder,
+  .search::-ms-input-placeholder {
+    color: var(--font-color-muted);
+    opacity: 1;
   }
 </style>
 
