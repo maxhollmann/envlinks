@@ -39,7 +39,7 @@
 <svelte:window on:keydown={handleKeydown}/>
 
 <svelte:head>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@5.9.55/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css">
   <title>{process.env.TITLE}</title>
 </svelte:head>
 
