@@ -2,6 +2,11 @@
 
 A minimalist link dashboard. Configured solely using environment variables which makes it a breeze to set up in Kubernetes & co for different environments.
 
+[Demo](https://envlinks-demo.vercel.app/)
+
+## Usage
+
+Not much to it: Type to filter the links, press enter to visit the first one.
 
 ## Configuration
 
