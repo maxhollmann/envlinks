@@ -23,6 +23,7 @@ Links have a name, URL, icon (optional), and sort index (optional). A link to th
    `name:` should be specified last, since it matches to the end of the string.
 1. `LINK_REPO_NAME = "Github Repo"` \
    `LINK_REPO_URL = "https://github.com/maxhollmann/envlinks"` \
+   `LINK_REPO_ICON = "github"` \
    `LINK_REPO_INDEX = "1"`
 
 The icons used are the [Material Design Icons](https://pictogrammers.com/library/mdi/).
