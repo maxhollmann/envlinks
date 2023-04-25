@@ -6,7 +6,7 @@ A minimalist link dashboard. Configured solely using environment variables which
 
 ## Usage
 
-Not much to it: Type to filter the links, press enter to visit the first one.
+Not much to it: Type to filter the links, press enter to visit the first one, or tab through to another one. Escape clears the filter.
 
 ## Configuration
 
@@ -28,17 +28,22 @@ Links have a name, URL, icon (optional), and sort index (optional). A link to th
 The icons used are the [Material Design Icons](https://pictogrammers.com/library/mdi/).
 
 
-## Example `docker-compose.yml`
+## Docker
+
+The Docker image is available on [Docker Hub](https://hub.docker.com/r/maxhollmann/envlinks) as `maxhollmann/envlinks`.
+
+It's recommended to use the `v0.x` tags instead of `latest` to avoid breaking changes. The current version is `v0.3`.
+
+### Example `docker-compose.yml`
 
 ```yaml
 version: '3.1'
 
 services:
   envlinks:
-    image: maxhollmann/envlinks:latest
-    restart: unless-stopped
+    image: maxhollmann/envlinks:v0.3
     ports:
-      - 80:5000
+      - 5000:5000
     environment:
       LINKS_TITLE: "Test links"
       LINK_0_GOOGLE: https://google.com icon:magnify
