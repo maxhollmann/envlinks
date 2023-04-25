@@ -52,6 +52,10 @@ services:
       LINK_2_envlinks_Github: https://github.com/maxhollmann/envlinks icon:github
 ```
 
+### jsonnet helpers
+
+If you're using [jsonnet](https://jsonnet.org/) to generate your Kubernetes manifests, check out the helpers in [envlinks-jsonnet](envlinks-jsonnet).
+
 
 ## Development
 
