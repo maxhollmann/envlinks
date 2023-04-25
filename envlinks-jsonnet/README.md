@@ -5,7 +5,7 @@ This directory contains jsonnet helpers to configure envlinks instances.
 Using [jsonnet-bundler](https://github.com/jsonnet-bundler/jsonnet-bundler):
 
 ```bash
-jb install git@github.com:maxhollmann/envlinks.git/envlinks-jsonnet@v0.3.1
+jb install github.com/maxhollmann/envlinks/envlinks-jsonnet@v0.3.1
 ```
 
 ### Usage
