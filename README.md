@@ -2,8 +2,8 @@
 
 ![Docker Image Version (latest semver)](https://img.shields.io/docker/v/maxhollmann/envlinks?sort=semver)
 ![Docker Image Size (latest semver)](https://img.shields.io/docker/image-size/maxhollmann/envlinks?sort=semver)
-![GitHub branch checks state](https://img.shields.io/github/checks-status/maxhollmann/envlinks/master)
 ![GitHub](https://img.shields.io/github/license/maxhollmann/envlinks)
+![CI](https://github.com/maxhollmann/envlinks/workflows/CI/badge.svg)
 
 A minimalist link dashboard. Configured solely using environment variables which makes it a breeze to set up in Kubernetes & co for different environments.
 
