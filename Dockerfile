@@ -12,10 +12,11 @@ COPY ./public ./public
 RUN npm run build
 
 
-FROM alpine:3.19
+FROM nginx:1.31-alpine-slim
 
-RUN apk add --no-cache bash jq busybox-extras
+RUN apk add --no-cache bash jq
 
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/public /srv/www
 COPY ./scripts/generate-config.sh /app/generate-config.sh
 COPY ./docker-entrypoint.sh /app/docker-entrypoint.sh
@@ -23,4 +24,4 @@ COPY ./docker-entrypoint.sh /app/docker-entrypoint.sh
 EXPOSE 5000
 
 ENTRYPOINT [ "/app/docker-entrypoint.sh" ]
-CMD [ "httpd", "-f", "-v", "-p", "5000", "-h", "/srv/www" ]
+CMD [ "nginx", "-g", "daemon off;" ]
