@@ -67,13 +67,16 @@ If you're using [jsonnet](https://jsonnet.org/) to generate your Kubernetes mani
 Install the dependencies:
 
 ```bash
-yarn install
+mise install
+pnpm install
 ```
 
 then start [Rollup](https://rollupjs.org):
 
 ```bash
-yarn dev
+pnpm dev
 ```
 
 Navigate to [localhost:5000](http://localhost:5000). You should see the app running with the links provided by `.env`.
+
+`pnpm` is provided via Corepack and pinned through `packageManager` in `package.json`. `jq` (used by the runtime config generator) is installed via `mise`.

@@ -1,19 +1,29 @@
-FROM node:14-alpine
+FROM node:22-alpine AS build
+
+RUN corepack enable
 
 WORKDIR /app
 
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile
+
 COPY rollup.config.js ./
-COPY package*.json ./
-
-RUN npm install
-
 COPY ./src ./src
 COPY ./public ./public
-COPY ./docker-entrypoint.sh ./
+
+RUN pnpm build
+
+
+FROM nginx:1.31-alpine-slim
+
+RUN apk add --no-cache bash jq
+
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /app/public /srv/www
+COPY ./scripts/generate-config.sh /app/generate-config.sh
+COPY ./docker-entrypoint.sh /app/docker-entrypoint.sh
 
 EXPOSE 5000
 
-ENV HOST=0.0.0.0
-
 ENTRYPOINT [ "/app/docker-entrypoint.sh" ]
-CMD [ "npm", "run", "start" ]
+CMD [ "nginx", "-g", "daemon off;" ]

@@ -1,0 +1,4 @@
+[tools]
+jq = "latest"
+node = "22"
+pnpm = "11.1.3"
