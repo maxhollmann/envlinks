@@ -1,4 +1,4 @@
 [tools]
 jq = "latest"
 node = "22"
-yarn = "1.22.10"
+pnpm = "11.1.3"

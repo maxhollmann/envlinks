@@ -2,6 +2,7 @@
   "name": "svelte-app",
   "version": "1.0.0",
   "private": true,
+  "packageManager": "pnpm@11.1.3",
   "scripts": {
     "build": "rollup -c",
     "generate-config": "./scripts/generate-config.sh public/config.js",
