@@ -8,6 +8,7 @@ COPY package.json pnpm-lock.yaml ./
 RUN pnpm install --frozen-lockfile
 
 COPY rollup.config.js ./
+COPY ./scripts ./scripts
 COPY ./src ./src
 COPY ./public ./public
 
