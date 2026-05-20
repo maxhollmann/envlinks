@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "build": "rollup -c",
+    "generate-config": "./scripts/generate-config.sh public/config.js",
     "start": "sirv public --no-clear",
-    "dev": "env-cmd rollup -c -w",
+    "dev": "env-cmd -- sh -c './scripts/generate-config.sh public/config.js && rollup -c -w'",
     "test": "jest"
   },
   "devDependencies": {

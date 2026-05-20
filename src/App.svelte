@@ -3,8 +3,11 @@
   import Search from './Search.svelte';
   import Links from './Links.svelte';
   import filterLinks from './filter-links.js';
+  import getLinks from './get-links.js';
 
-  let links = process.env.LINKS;
+  const env = (typeof window !== 'undefined' && window.env) || {};
+  let links = getLinks(env);
+  let title = env.LINKS_TITLE || 'Links';
   let search = "";
   let searchElement;
   let activeElement = null;
@@ -56,7 +59,7 @@
 
 <svelte:head>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css">
-  <title>{process.env.TITLE}</title>
+  <title>{title}</title>
 </svelte:head>
 
 <Layout>

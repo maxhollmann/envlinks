@@ -1,5 +1,6 @@
 #!/bin/sh
+set -eu
 
-npm run build
+/app/generate-config.sh /srv/www/config.js
 
 exec "$@"

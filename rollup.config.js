@@ -4,8 +4,6 @@ import resolve from '@rollup/plugin-node-resolve';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-only';
-import replace from '@rollup/plugin-replace';
-import getLinks from './src/get-links';
 
 
 const production = !process.env.ROLLUP_WATCH;
@@ -73,11 +71,6 @@ export default {
     // If we're building for production (npm run build
     // instead of npm run dev), minify
     production && terser(),
-
-    replace({
-      'process.env.LINKS': JSON.stringify(getLinks(process.env)),
-      'process.env.TITLE': JSON.stringify(process.env.LINKS_TITLE || 'Links'),
-    }),
   ],
   watch: {
     clearScreen: false
