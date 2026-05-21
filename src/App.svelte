@@ -9,6 +9,12 @@
   let links = getLinks(env);
   let title = env.LINKS_TITLE || 'Links';
   let newTab = env.LINKS_NEW_TAB === 'true' || env.LINKS_NEW_TAB === '1';
+
+  if (env.LINKS_CSS) {
+    const style = document.createElement('style');
+    style.textContent = env.LINKS_CSS;
+    document.head.appendChild(style);
+  }
   let search = "";
   let searchElement;
   let activeElement = null;
