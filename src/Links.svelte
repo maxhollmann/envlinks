@@ -2,6 +2,7 @@
   import Link from './Link.svelte';
 
   export let links;
+  export let newTab = false;
 </script>
 
 
@@ -15,6 +16,6 @@
 
 <div class="links">
   {#each links as link, i}
-    <Link {...link} />
+    <Link {...link} {newTab} />
   {/each}
 </div>
