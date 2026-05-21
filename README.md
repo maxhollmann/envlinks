@@ -23,6 +23,14 @@ The page title is set using the `LINKS_TITLE` environment variable.
 
 Set `LINKS_NEW_TAB=true` (or `1`) to open all links in a new browser tab instead of the current tab.
 
+#### Custom CSS
+
+Set `LINKS_CSS` to inject arbitrary CSS into the page. Useful for tweaking font size, colors, spacing, etc. without rebuilding the bundle. Example:
+
+```
+LINKS_CSS=":root { font-size: 18px; }"
+```
+
 #### Links
 
 Links have a name, URL, icon (optional), and sort index (optional). A link to this repo could be configured in various ways:
