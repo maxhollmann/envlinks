@@ -24,7 +24,7 @@ COPY --from=build /app/public /srv/www
 COPY ./scripts/generate-config.sh /app/generate-config.sh
 COPY ./docker-entrypoint.sh /app/docker-entrypoint.sh
 
-EXPOSE 5000
+EXPOSE 80
 
 ENTRYPOINT [ "/app/docker-entrypoint.sh" ]
 CMD [ "nginx", "-g", "daemon off;" ]

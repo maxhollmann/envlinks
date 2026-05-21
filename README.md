@@ -49,7 +49,7 @@ services:
   envlinks:
     image: maxhollmann/envlinks:v0.3
     ports:
-      - 5000:5000
+      - 80:80
     environment:
       LINKS_TITLE: "Test links"
       LINK_0_GOOGLE: https://google.com icon:magnify

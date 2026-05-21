@@ -33,7 +33,7 @@ This means:
 - `scripts/generate-config.sh` — bash + jq. Used both in dev (via `pnpm generate-config` or chained into `pnpm dev`) and at container startup. Filters `process.env` for `LINK_*` and `LINKS_TITLE`, writes them as a JSON-encoded `window.env` assignment.
 - `Dockerfile` is multi-stage: stage 1 (`node:22-alpine`) installs deps with pnpm and runs `pnpm build`; stage 2 (`nginx:1.31-alpine-slim` + `apk add bash jq`) copies in the prebuilt `public/` and the entrypoint.
 - `docker-entrypoint.sh` runs `generate-config.sh` then `exec "$@"` (nginx).
-- `nginx.conf` serves `/srv/www` on port 5000 with an SPA catch-all (`try_files $uri $uri/ /index.html`) and gzip.
+- `nginx.conf` serves `/srv/www` on port 80 with an SPA catch-all (`try_files $uri $uri/ /index.html`) and gzip.
 
 ### Source files
 
