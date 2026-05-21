@@ -3,6 +3,7 @@
   export let name;
   export let url;
   export let icon = null;
+  export let newTab = false;
 </script>
 
 
@@ -37,6 +38,8 @@
 <div class="link-container">
   <a href={url}
      class="link"
+     target={newTab ? '_blank' : '_self'}
+     rel={newTab ? 'noopener noreferrer' : undefined}
      >
     {#if icon}
     <div class="link-icon">

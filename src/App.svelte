@@ -8,6 +8,7 @@
   const env = (typeof window !== 'undefined' && window.env) || {};
   let links = getLinks(env);
   let title = env.LINKS_TITLE || 'Links';
+  let newTab = env.LINKS_NEW_TAB === 'true' || env.LINKS_NEW_TAB === '1';
   let search = "";
   let searchElement;
   let activeElement = null;
@@ -27,10 +28,14 @@
       }
     } else if (event.key == 'Enter'
                || event.target != searchElement.getInput() && event.key == ' ') {
+      const navigate = (url) => {
+        if (newTab) window.open(url, '_blank', 'noopener,noreferrer');
+        else window.location = url;
+      };
       if (activeElement && activeElement.classList.contains('link') && activeElement.href) {
-        window.location = activeElement.href;
+        navigate(activeElement.href);
       } else if (filteredLinks.length > 0) {
-        window.location = filteredLinks[0].url;
+        navigate(filteredLinks[0].url);
       }
     } else if (event.target != searchElement.getInput() && event.key.length == 1) {
       searchElement.reset(event.key)
@@ -68,6 +73,6 @@
             bind:this={searchElement}
             />
 
-    <Links links={filteredLinks} />
+    <Links links={filteredLinks} {newTab} />
   </div>
 </Layout>

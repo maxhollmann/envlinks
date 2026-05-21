@@ -7,7 +7,7 @@ mkdir -p "$(dirname "$out")"
 env_json=$(
   for var in $(compgen -e); do
     case "$var" in
-      LINK_*|LINKS_TITLE)
+      LINK_*|LINKS_*)
         jq -n --arg key "$var" --arg value "${!var}" '{key: $key, value: $value}'
         ;;
     esac

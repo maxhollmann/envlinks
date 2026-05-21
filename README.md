@@ -19,6 +19,10 @@ Not much to it: Type to filter the links, press enter to visit the first one, or
 
 The page title is set using the `LINKS_TITLE` environment variable.
 
+#### Open links in new tab
+
+Set `LINKS_NEW_TAB=true` (or `1`) to open all links in a new browser tab instead of the current tab.
+
 #### Links
 
 Links have a name, URL, icon (optional), and sort index (optional). A link to this repo could be configured in various ways:
