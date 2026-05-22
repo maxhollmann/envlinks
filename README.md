@@ -50,7 +50,7 @@ The icons used are the [Material Design Icons](https://pictogrammers.com/library
 
 The Docker image is available on [Docker Hub](https://hub.docker.com/r/maxhollmann/envlinks) as `maxhollmann/envlinks`.
 
-It's recommended to use the `v0.x` tags instead of `latest` to avoid breaking changes. The current version is `v0.3`.
+It's recommended to use the `v0.x` tags instead of `latest` to avoid breaking changes. The current version is `v0.6`.
 
 ### Example `docker-compose.yml`
 
@@ -59,7 +59,7 @@ version: '3.1'
 
 services:
   envlinks:
-    image: maxhollmann/envlinks:v0.3
+    image: maxhollmann/envlinks:v0.6
     ports:
       - 80:80
     environment:
