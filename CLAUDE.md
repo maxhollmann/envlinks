@@ -21,9 +21,10 @@ pnpm generate-config  # write public/config.js from current env (calls scripts/g
 
 ### Runtime data pipeline
 
-The architectural decision: the Svelte bundle is content-agnostic. At container startup, a small bash script writes `/srv/www/config.js` containing `window.env = { ... }` populated from `LINK_*` and `LINKS_TITLE` env vars. `index.html` loads `config.js` *before* the bundle, so by the time `App.svelte` runs it can call `getLinks(window.env)` and render synchronously.
+The architectural decision: the Svelte bundle is content-agnostic. At container startup, a small bash script writes `/srv/www/config.js` containing `window.env = { ... }` populated from `LINK_*` and `LINKS_TITLE` env vars. `index.html` loads `config.js` _before_ the bundle, so by the time `App.svelte` runs it can call `getLinks(window.env)` and render synchronously.
 
 This means:
+
 - `src/get-links.js` runs in the **browser**, not in Node.
 - Changing links does **not** require a rebuild — just restart the container with new env vars.
 - The runtime image has no Node, no npm, no Rollup. It's `nginx:alpine-slim` + `bash` + `jq` (~15 MB).

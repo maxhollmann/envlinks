@@ -3,28 +3,28 @@ name: CI
 on:
   push:
     branches:
-      - '*'
+      - "*"
     tags:
-      - 'v*'
+      - "v*"
   pull_request:
     branches:
-      - '*'
+      - "*"
 
 jobs:
   test:
     name: Run tests
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: '22'
-    - name: Enable corepack
-      run: corepack enable
-    - name: Install modules
-      run: pnpm install --frozen-lockfile
-    - name: Run tests
-      run: pnpm test
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Enable corepack
+        run: corepack enable
+      - name: Install modules
+        run: pnpm install --frozen-lockfile
+      - name: Run tests
+        run: pnpm test
 
   push_to_registry:
     name: Push Docker image to Docker Hub

@@ -45,7 +45,6 @@ Links have a name, URL, icon (optional), and sort index (optional). A link to th
 
 The icons used are the [Material Design Icons](https://pictogrammers.com/library/mdi/).
 
-
 ## Docker
 
 The Docker image is available on [Docker Hub](https://hub.docker.com/r/maxhollmann/envlinks) as `maxhollmann/envlinks`.
@@ -55,7 +54,7 @@ It's recommended to use the `v0.x` tags instead of `latest` to avoid breaking ch
 ### Example `docker-compose.yml`
 
 ```yaml
-version: '3.1'
+version: "3.1"
 
 services:
   envlinks:
@@ -72,7 +71,6 @@ services:
 ### jsonnet helpers
 
 If you're using [jsonnet](https://jsonnet.org/) to generate your Kubernetes manifests, check out the helpers in [envlinks-jsonnet](envlinks-jsonnet).
-
 
 ## Development
 

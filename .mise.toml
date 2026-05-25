@@ -1,4 +1,5 @@
 [tools]
 jq = "latest"
+lefthook = "2.1.8"
 node = "22"
 pnpm = "11.1.3"

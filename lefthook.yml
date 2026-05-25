@@ -1,0 +1,6 @@
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      run: pnpm fmt
+      stage_fixed: true

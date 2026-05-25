@@ -2,14 +2,18 @@
   "name": "envlinks",
   "version": "1.0.0",
   "private": true,
-  "packageManager": "pnpm@11.1.3",
   "scripts": {
     "prebuild": "node scripts/generate-config.js",
     "build": "rollup -c",
     "generate-config": "./scripts/generate-config.sh public/config.js",
     "start": "sirv public --no-clear",
     "dev": "env-cmd -- sh -c './scripts/generate-config.sh public/config.js && rollup -c -w'",
-    "test": "jest"
+    "test": "jest",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check"
+  },
+  "dependencies": {
+    "@rollup/plugin-replace": "^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
@@ -19,6 +23,7 @@
     "babel-jest": "^27.1.0",
     "env-cmd": "^10.1.0",
     "jest": "^27.1.0",
+    "oxfmt": "^0.51.0",
     "rollup": "^2.3.4",
     "rollup-plugin-css-only": "^3.1.0",
     "rollup-plugin-livereload": "^2.0.0",
@@ -27,7 +32,5 @@
     "sirv-cli": "^1.0.0",
     "svelte": "^5.55.9"
   },
-  "dependencies": {
-    "@rollup/plugin-replace": "^3.0.0"
-  }
+  "packageManager": "pnpm@11.1.3"
 }
