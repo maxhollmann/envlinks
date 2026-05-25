@@ -11,12 +11,6 @@ importers:
       '@rollup/plugin-replace':
         specifier: ^3.0.0
         version: 3.1.0(rollup@2.80.0)
-      sirv-cli:
-        specifier: ^1.0.0
-        version: 1.0.14
-      svelte-environment-variables:
-        specifier: ^1.0.4
-        version: 1.0.4
     devDependencies:
       '@babel/core':
         specifier: ^7.15.0
@@ -54,6 +48,9 @@ importers:
       rollup-plugin-terser:
         specifier: ^7.0.0
         version: 7.0.2(rollup@2.80.0)
+      sirv-cli:
+        specifier: ^1.0.0
+        version: 1.0.14
       svelte:
         specifier: ^3.0.0
         version: 3.59.2
@@ -1912,9 +1909,6 @@ packages:
   supports-preserve-symlinks-flag@1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
-
-  svelte-environment-variables@1.0.4:
-    resolution: {integrity: sha512-3x0zwtkzbfdFeJCd9i3JKxnFfyPcVdKdMC+PZ/dsWZidd/nnmEPnZl7RGbY0nfWqgnVbr+13Ly0PZXR4epFtEQ==}
 
   svelte@3.59.2:
     resolution: {integrity: sha512-vzSyuGr3eEoAtT/A6bmajosJZIUWySzY2CzB3w2pgPvnkUjGqlDnsNnA0PMO+mMAhuyMul6C2uuZzY6ELSkzyA==}
@@ -4411,8 +4405,6 @@ snapshots:
       supports-color: 7.2.0
 
   supports-preserve-symlinks-flag@1.0.0: {}
-
-  svelte-environment-variables@1.0.4: {}
 
   svelte@3.59.2: {}
 
