@@ -15,11 +15,11 @@
     style.textContent = env.LINKS_CSS;
     document.head.appendChild(style);
   }
-  let search = "";
-  let searchElement;
+  let search = $state("");
+  let searchElement = $state();
   let activeElement = null;
 
-  $: filteredLinks = filterLinks(links, search);
+  let filteredLinks = $derived(filterLinks(links, search));
 
 
   const handleKeydown = (event) => {
@@ -66,7 +66,7 @@
 </style>
 
 
-<svelte:window on:keydown={handleKeydown} />
+<svelte:window onkeydown={handleKeydown} />
 
 <svelte:head>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css">

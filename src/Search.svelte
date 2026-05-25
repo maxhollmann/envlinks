@@ -1,7 +1,7 @@
 <script>
-  export let query;
+  let { query = $bindable() } = $props();
 
-  let inputElement;
+  let inputElement = $state();
 
   export function reset(str) {
     query = str;

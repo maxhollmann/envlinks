@@ -1,9 +1,21 @@
 <script>
-  export let index;
-  export let name;
-  export let url;
-  export let icon = null;
-  export let newTab = false;
+  /**
+   * @typedef {Object} Props
+   * @property {any} index
+   * @property {any} name
+   * @property {any} url
+   * @property {any} [icon]
+   * @property {boolean} [newTab]
+   */
+
+  /** @type {Props} */
+  let {
+    index,
+    name,
+    url,
+    icon = null,
+    newTab = false
+  } = $props();
 </script>
 
 

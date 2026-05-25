@@ -1,8 +1,14 @@
 <script>
   import Link from './Link.svelte';
 
-  export let links;
-  export let newTab = false;
+  /**
+   * @typedef {Object} Props
+   * @property {any} links
+   * @property {boolean} [newTab]
+   */
+
+  /** @type {Props} */
+  let { links, newTab = false } = $props();
 </script>
 
 

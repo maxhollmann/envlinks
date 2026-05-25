@@ -1,3 +1,13 @@
+<script>
+  /**
+   * @typedef {Object} Props
+   * @property {import('svelte').Snippet} [children]
+   */
+
+  /** @type {Props} */
+  let { children } = $props();
+</script>
+
 <style>
   .main {
     display: flex;
@@ -17,6 +27,6 @@
 
 <div class="main">
   <div class="app">
-    <slot></slot>
+    {@render children?.()}
   </div>
 </div>
